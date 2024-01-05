@@ -1,0 +1,1 @@
+{"version":3,"sources":["variable.scss","variable.css"],"names":[],"mappings":"AAIA,MACI,8BCHJ","file":"../scss/variable.min.css","sourcesContent":["@charset \"UTF-8\";\r\n\r\n$kratos_topnav_position: var(--kratos_topnav_position);\r\n\r\n:root {\r\n    --kratos_topnav_position: fixed;\r\n}",":root {\n  --kratos_topnav_position: fixed;\n}"]}
