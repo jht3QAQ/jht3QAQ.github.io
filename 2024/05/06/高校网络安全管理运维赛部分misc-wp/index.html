@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <link rel="icon" href="/images/70e16d9eb5a85bcc.jpg">
   
-  <title>分类 | jht3の个人站</title>
+  <title>高校网络安全管理运维赛部分misc wp | jht3の个人站</title>
   
   <meta name="author" content="jht3" />
   <meta http-equiv="Cache-Control" content="no-transform" />
@@ -15,15 +15,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
   
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="CTF" />
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="https://jht3qaq.github.io/categories/">
+  <meta name="description" content="包含SecretDB和f or r两题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高校网络安全管理运维赛部分misc wp">
+<meta property="og:url" content="https://jht3qaq.github.io/2024/05/06/%E9%AB%98%E6%A0%A1%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E8%BF%90%E7%BB%B4%E8%B5%9B%E9%83%A8%E5%88%86misc-wp/">
 <meta property="og:site_name" content="jht3の个人站">
+<meta property="og:description" content="包含SecretDB和f or r两题">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://jht3qaq.github.io/images/70e16d9eb5a85bcc.jpg">
+<meta property="article:published_time" content="2024-05-06T14:48:46.000Z">
+<meta property="article:modified_time" content="2024-05-06T16:04:27.402Z">
 <meta property="article:author" content="jht3">
+<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://jht3qaq.github.io/images/70e16d9eb5a85bcc.jpg">
   
@@ -129,75 +134,126 @@
 
         
 
-            <style>
-  .categories ul {
-    list-style: none;
-  }
+            <article itemscope itemtype="https://schema.org/Article">
+    
+    <link itemprop="mainEntityOfPage" href="https://jht3qaq.github.io/2024/05/06/%E9%AB%98%E6%A0%A1%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E8%BF%90%E7%BB%B4%E8%B5%9B%E9%83%A8%E5%88%86misc-wp/">
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            
+                <h1 class="kratos-entry-title text-center" itemprop="name headline">高校网络安全管理运维赛部分misc wp</h1>
+            
+            
+            <ul class="kratos-post-meta text-center">
+                <li><time datetime="2024-05-06T14:48:46.000Z" itemprop="datePublished"><i class="fa fa-calendar"></i> 2024-05-06</time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> 作者 <span itemprop="name">jht3</span>
+                </li>
+                
+                    <li>
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            782
+                        
+                        字
+                    </li>
+                
+                
+            </ul>
+        </header>
+        <div class="kratos-post-content">
+            
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="text"><p>本文最后编辑于 <time datetime="1715011467402"></time> 前，其中的内容可能需要更新。</p></div>
+            </div>
+            
+            
+            
+                <div class="kratos-post-inner-toc toc-div-class" >
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SecretDB"><span class="toc-text">1. SecretDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#f-or-r"><span class="toc-text">2. f or r</span></a></li></ol>
+                </div>
+            
+            <hr />
+            <div itemprop="articleBody"><h2 id="SecretDB">1. SecretDB</h2>
+<p>一个sqlite数据库，直接查看发现flag表只剩一条记录：</p>
+<img src="/2024/05/06/%E9%AB%98%E6%A0%A1%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E8%BF%90%E7%BB%B4%E8%B5%9B%E9%83%A8%E5%88%86misc-wp/SecretDB%E8%A1%A8.jpg" class="SecretDB表">
+<p>看样子前41个记录应该是被删了，每个记录包含了一个sort和一个message两个值。</p>
+<p>根据<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jiangcsu/p/6569045.html">SQLite3数据库文件结构解析</a>，可以对文件中的记录进行解读：</p>
+<img src="/2024/05/06/%E9%AB%98%E6%A0%A1%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E8%BF%90%E7%BB%B4%E8%B5%9B%E9%83%A8%E5%88%86misc-wp/SecretDB%E8%A1%A8%E7%A4%BA%E4%BE%8B%E6%95%B0%E6%8D%AE.jpg" class="SecretDB表示例数据">
+<img src="/2024/05/06/%E9%AB%98%E6%A0%A1%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E8%BF%90%E7%BB%B4%E8%B5%9B%E9%83%A8%E5%88%86misc-wp/SecretDB%E8%A1%A8%E6%95%B0%E6%8D%AE%E8%A7%A3%E6%9E%90.png" class="SecretDB表数据解析">
+<p>因为记录的格式固定，很容易根据<code>04 00 01</code>找到其他被删掉的记录：</p>
+<img src="/2024/05/06/%E9%AB%98%E6%A0%A1%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E8%BF%90%E7%BB%B4%E8%B5%9B%E9%83%A8%E5%88%86misc-wp/SecretDB%E5%88%A0%E6%8E%89%E7%9A%84%E8%AE%B0%E5%BD%95.jpg" class="SecretDB删掉的记录">
+<p>因为后面跟的type是0F，可以算出是长度为1的字符串类型，此时可以根据<code>04 00 01 0F</code>序列找出部分flag的sort和message记录，但是找完之后发现和实际flag差很多，就直接以<code>0F</code>作为目标进行搜索，找出0F后面跟着的所有sort和message：</p>
+<img src="/2024/05/06/%E9%AB%98%E6%A0%A1%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E8%BF%90%E7%BB%B4%E8%B5%9B%E9%83%A8%E5%88%86misc-wp/SecretDB_flag%E7%A2%8E%E7%89%87.jpg" class="SecretDB_flag碎片">
+<p>排除掉一些明显不不是字符的message后得到如下flag：</p>
+<img src="/2024/05/06/%E9%AB%98%E6%A0%A1%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E8%BF%90%E7%BB%B4%E8%B5%9B%E9%83%A8%E5%88%86misc-wp/SecretDB_flag.jpg" class="SecretDB_flag">
+<p>有一位死活还原不出来了 就硬猜吧 最后得出flag：<code>flag&#123;f6291bf0-923c-4ba6-82d7-ffabba4e8f0b&#125;</code></p>
+<h2 id="f-or-r">2. f or r</h2>
+<p>根据<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/655163098">探究Windows 10 累积更新与系统文件变化</a>可以得知当windows想要更新一个文件时，会携带两个差分文件f和r，在更新一个文件时，windows会先将当前版本的文件用当前版本的r回退到RTM版本，然后用RTM版本的文件用f更新到最新版。</p>
+<p>而差分文件是使用<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/devnotes/msdelta-applydeltab">ApplyDeltaB函数</a>来对一个文件进行更改，在<a target="_blank" rel="noopener" href="https://gist.github.com/wumb0/9542469e3915953f7ae02d63998d2553">github</a>上有现成的python脚本可以调用此函数。</p>
+<p>因此我们要做的就是找出我们系统中的curl，回退到RTM版本，然后进行更新。</p>
+<p>找到当前版本的curl和对应的补丁：</p>
 
-  .categories .category-list-item {
-    position: relative;
-    padding-top: 20px;
-  }
-
-  .categories .category-list-item .category-list-link::before {
-    content: " ";
-    position: absolute;
-    left: -30px;
-    top: 50%;
-    margin-left: -4px;
-    margin-top: -4px;
-    width: 8px;
-    height: 8px;
-    background: #bbb;
-    border-radius: 50%;
-    transition: all .3s ease-in-out;
-  }
-
-  .categories .category-list-item .category-list-link:hover::before {
-    background: #222;
-  }
-
-  a {
-    color:#666;
-  }
-
-  .categories .category-list-item .category-list-link {
-    position: relative;
-    margin-left: 24px;
-    font-size: 20px;
-    font-weight: 400;
-    line-height: inherit;
-  }
-
-  .categories .category-list-item .category-list-link::after {
-    font-family: fontawesome;
-    opacity: 0;
-    content: "\f138";
-    margin-left: 12px;
-    color: #00a7e0;
-    transition: opacity .3s ease-in-out;
-  }
-
-  .categories .category-list-item .category-list-link:hover::after {
-    opacity: 100%;
-  }
-</style>
-<article>
-  <div class="kratos-hentry kratos-post-inner clearfix">
-    <div class="kratos-post-content">
-      <h2 class="title-h2 text-center">
-        分类目录
-      </h2>
-      <div style="margin-left: 2em;">
-        <h3 class="archive-page-counter">
-          当前共有 0 种分类 (゜-゜)つロ 干杯~
-        </h3>
-        <div class="categories">
-          
+<p>回退和更新，如果提示Error Code 13那就是文件校验没通过，应用差分文件失败，应该重新检查自己的输入文件是否符合差分文件的要求：</p>
+<img src="/2024/05/06/%E9%AB%98%E6%A0%A1%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E8%BF%90%E7%BB%B4%E8%B5%9B%E9%83%A8%E5%88%86misc-wp/fr%E5%9B%9E%E9%80%80%E5%92%8C%E6%9B%B4%E6%96%B0.jpg" class="fr回退和更新">
+<p>然后拖进IDA里搜索flag发现和version绑在一起：</p>
+<img src="/2024/05/06/%E9%AB%98%E6%A0%A1%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E8%BF%90%E7%BB%B4%E8%B5%9B%E9%83%A8%E5%88%86misc-wp/fr_IDA.jpg" class="fr_IDA">
+<p>因此通过<code>--version</code>命令查看flag：</p>
+<img src="/2024/05/06/%E9%AB%98%E6%A0%A1%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E8%BF%90%E7%BB%B4%E8%B5%9B%E9%83%A8%E5%88%86misc-wp/fr_flag.jpg" class="fr_flag"></div>
         </div>
-      </div>
+        
+            <div class="kratos-copyright text-center clearfix">
+                <h5 itemprop="copyrightNotice">本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+        
+        <footer class="kratos-entry-footer clearfix">
+            
+            <div class="footer-tag clearfix">
+                <div class="pull-left">
+                <i class="fa fa-tags"></i>
+                    <a class="tag-none-link" href="/tags/CTF/" rel="tag">CTF</a>
+                </div>
+                <div class="pull-date">
+                    <time datetime="2024-05-06T16:04:27.402Z" itemprop="dateModified">最后编辑：2024-05-07</time>
+                </div>
+            </div>
+        </footer>
     </div>
-  </div>
+    
+        <nav class="navigation post-navigation clearfix" role="navigation">
+            
+            <div class="nav-previous clearfix">
+                <a title=" XYCTF2024 Writeup" href="/2024/04/26/XYCTF2024-Writeup/">&lt; 上一篇</a>
+            </div>
+            
+            
+        </nav>
+    
+    
+        <link rel="stylesheet" href="/vendors/gitalk@1.7.2/dist/gitalk.css"></script>
+<div id="gitalk-container" class="post-comments lazy-load" style="padding-left:2rem; padding-right:2rem;"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            console.log('Gitalk loading...');
+            const gitalk = new Gitalk(Object.assign({
+                id: '086462af71f83546fa8a93dc9d91a90f',
+                path: '/2024/05/06/%E9%AB%98%E6%A0%A1%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E7%AE%A1%E7%90%86%E8%BF%90%E7%BB%B4%E8%B5%9B%E9%83%A8%E5%88%86misc-wp/'
+            }, JSON.parse('{"clientID":"263909d74813a540cbd5","clientSecret":"2281b95d2a4d3a7d298e387e940f9388e01883e5","repo":"jht3QAQ.github.io","owner":"jht3QAQ","admin":["jht3QAQ"],"distractionFreeMode":false}')));
+
+            gitalk.render('gitalk-container');
+        }
+        if (typeof Gitalk === 'undefined') {
+            const src = '/vendors/gitalk@1.7.2/dist/gitalk.min.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://github.com/gitalk/gitalk">comments powered by Gitalk.</a></noscript>
+    
 </article>
 
         
@@ -211,8 +267,6 @@
 
 <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
     <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
-    
-        <div class="sticky-area">
     
     
                 <aside id="krw-about" class="widget widget-kratos-about clearfix">
@@ -253,6 +307,20 @@
     </div>
 </aside>
             
+                    <div class="sticky-area">
+                
+                    <aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" >
+    <div class="photo-background"></div>
+    <h4 class="widget-title no-after">
+        <i class="fa fa-compass"></i>
+        文章目录
+        <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
+    </h4>
+    <div class="textwidget">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SecretDB"><span class="toc-text">1. SecretDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#f-or-r"><span class="toc-text">2. f or r</span></a></li></ol>
+    </div>
+</aside>
+                
                 
 
             
